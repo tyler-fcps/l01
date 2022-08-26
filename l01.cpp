@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <fstream>
+#include "image.h"
 using namespace std;
 
 int main() {
@@ -10,18 +12,3 @@ int main() {
 
     return 0;
 }
-
-class Image {
-public:
-
-    Image(int width, int height, string name) : width(width), height(height), name(name) {}
-
-    void print() {
-        cout << this->width << "\n" << this->height << "\n" << this->name << endl;
-    }
-
-private:
-    int width;
-    int height;
-    string name;
-};
