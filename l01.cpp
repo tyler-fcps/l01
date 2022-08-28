@@ -12,7 +12,7 @@ int main()
     auto width = 800;
     auto height = 800;
 
-    image::Image *image = new image::Image(width, height, "B:\\Programming\\Computer Vision\\l01\\output.ppm");
+    image::Image *image = new image::Image(width, height, "output.ppm");
     image->print();
 
     for (int i = 0; i < width; i++)
