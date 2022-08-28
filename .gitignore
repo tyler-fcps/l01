@@ -28,5 +28,9 @@
 
 # Executables
 *.exe
+*.pdb
 *.out
 *.app
+
+# Random files
+./ipynb_checkpoints/
