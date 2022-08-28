@@ -2,12 +2,14 @@
 #include <vector>
 #include <fstream>
 #include "image.h"
+
 using namespace std;
 
-int main() {
+int main()
+{
     cout << "This is my first C++ project!" << endl;
 
-    Image* image = new Image(800, 800, "output.ppm");
+    image::Image *image = new image::Image(800, 800, "output.ppm");
     image->print();
 
     return 0;

@@ -1,9 +1,17 @@
-using namespace std;
+namespace image
+{
+    class Image
+    {
+    public:
+        Image(int, int, std::string);
+        void print();
+        void output();
+        void write(int, int, int, int, int);
 
-class Image {
-public:
-    Image(int, int, string);
-    void print(void);
-    void output(void);
-    void write(int, int, int, int, int, int);
-};
+    private:
+        int width;
+        int height;
+        std::string name;
+        std::vector<unsigned int> imageData;
+    };
+}
