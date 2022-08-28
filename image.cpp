@@ -7,7 +7,8 @@ using namespace image;
 
 Image::Image(int width, int height, string name) : width(width), height(height), name(name)
 {
-    imageData = (vector<unsigned int>)(width * height * 3, 0);
+    vector<unsigned int> vect(width * height * 3, 0);
+    imageData = vect;
 }
 
 void Image::write(int x, int y, int r, int g, int b)
@@ -29,9 +30,9 @@ void Image::output()
     // Write data
     for (int i = 0; i < this->height; i++)
     {
-        for (int j = 0; j < this->width; j++)
+        for (int j = 0; j < this->width * 3; j++)
         {
-            out << this->imageData[(j + i * this->width) * 3] << " ";
+            out << this->imageData[j + i * this->width * 3] << " ";
         }
         out << "\n";
     }
@@ -44,5 +45,6 @@ void Image::print()
 {
     cout << this->width << "\n"
          << this->height << "\n"
+         << this->imageData.size() << "\n"
          << this->name << endl;
 }
