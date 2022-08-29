@@ -1,12 +1,14 @@
+#pragma once
+
 namespace image
 {
     class Image
     {
     public:
-        Image(int, int, std::string);
+        Image(int width, int height, std::string name);
         void print();
         void output();
-        void write(int, int, int, int, int);
+        void write(int x, int y, int r, int g, int b);
 
     private:
         int width;

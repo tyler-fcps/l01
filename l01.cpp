@@ -2,6 +2,9 @@
 #include <vector>
 #include <fstream>
 #include "image.h"
+#include "shapes.h"
+#include <cctype>
+#include <random>
 
 using namespace std;
 
@@ -15,12 +18,20 @@ int main()
     image::Image *image = new image::Image(width, height, "output.ppm");
     image->print();
 
-    for (int i = 0; i < width; i++)
+    std::random_device os_seed;
+    auto seed = os_seed();
+
+    std::mt19937 generator(seed);
+    std::uniform_int_distribution<unsigned int> distribute_xy(0, 799);
+    std::uniform_int_distribution<unsigned int> distribute_r(50, 100);
+
+    for (int i = 0; i < 100; i++)
     {
-        for (int j = 0; j < height; j++)
-        {
-            image->write(i, j, i % 255, j % 255, 10);
-        }
+        int x = distribute_xy(generator);
+        int y = distribute_xy(generator);
+        int r = distribute_r(generator);
+        shapes::Circle circle = shapes::Circle(x, y, r);
+        circle.draw(image, 200, 150, 150);
     }
 
     image->output();

@@ -13,6 +13,11 @@ Image::Image(int width, int height, string name) : width(width), height(height),
 
 void Image::write(int x, int y, int r, int g, int b)
 {
+    if (x < 0 || y < 0 || x >= this->width || y >= this->height)
+    {
+        return;
+    }
+
     int i = (x + y * this->width) * 3;
     this->imageData[i + 0] = r;
     this->imageData[i + 1] = g;
