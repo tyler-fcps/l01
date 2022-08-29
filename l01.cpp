@@ -38,7 +38,7 @@ int main()
     // Make triangle
     cout << "Triangle Points: " << p1x << " " << p1y << ", " << p2x << " " << p2y << ", " << p3x << " " << p3y << endl;
     shapes::Triangle triangle(p1x, p1y, p2x, p2y, p3x, p3y);
-    triangle.draw(image, 255, 0, 0);
+    triangle.draw(image, 255, 98, 179);
 
     // Make circumcircle
     int x, y, r;
@@ -65,13 +65,13 @@ int main()
     oh.calc_midpoint(&x, &y);
     r /= 2;
     shapes::Circle ninepoint(x, y, r);
-    ninepoint.draw(image, 200, 200, 100);
+    ninepoint.draw(image, 255, 174, 98);
 
     // Make incircle
     triangle.calc_incircle(&x, &y, &r);
     cout << x << " " << y << " " << r << endl;
     shapes::Circle incircle(x, y, r);
-    incircle.draw(image, 0, 0, 255);
+    incircle.draw(image, 255, 253, 98);
 
     // Output final image
     image->output();
