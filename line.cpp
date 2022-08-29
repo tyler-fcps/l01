@@ -10,49 +10,74 @@ Line::Line(int x1, int y1, int x2, int y2) : x1(x1), x2(x2), y1(y1), y2(y2)
 {
 }
 
-double Line::calc_length() {
+double Line::calc_length()
+{
     return sqrt((double)((this->x2 - this->x1) * (this->x2 - this->x1)) + (double)((this->y2 - this->y1) * (this->y2 - this->y1)));
 }
 
-void Line::calc_midpoint(int* x, int* y) {
+void Line::calc_midpoint(int *x, int *y)
+{
     *x = (this->x1 + this->x2) / 2;
     *y = (this->y1 + this->y2) / 2;
 }
 
-double Line::calc_slope() {
+double Line::calc_slope()
+{
     return (double)(this->y2 - this->y1) / (double)(this->x2 - this->x1);
 }
 
 void Line::draw(image::Image *image, int r, int g, int b)
 {
-    int delta_x = this->x2 - this->x1;                                                                                               
+    int delta_x = this->x2 - this->x1;
     int delta_y = this->y2 - this->y1;
-    
+
     if (delta_x * delta_x > delta_y * delta_y)
     {
-        if(delta_x < 0) {
+        if (delta_x < 0)
+        {
             int tmp = this->x2;
             this->x2 = this->x1;
             this->x1 = tmp;
-            
+
             tmp = this->y2;
             this->y2 = this->y1;
             this->y1 = tmp;
         }
         this->major_x(image, r, g, b);
-    }
-    else
-    {
-        if(delta_y < 0) {
+        if (delta_x < 0)
+        {
             int tmp = this->x2;
             this->x2 = this->x1;
             this->x1 = tmp;
-            
+
+            tmp = this->y2;
+            this->y2 = this->y1;
+            this->y1 = tmp;
+        }
+    }
+    else
+    {
+        if (delta_y < 0)
+        {
+            int tmp = this->x2;
+            this->x2 = this->x1;
+            this->x1 = tmp;
+
             tmp = this->y2;
             this->y2 = this->y1;
             this->y1 = tmp;
         }
         this->major_y(image, r, g, b);
+        if (delta_y < 0)
+        {
+            int tmp = this->x2;
+            this->x2 = this->x1;
+            this->x1 = tmp;
+
+            tmp = this->y2;
+            this->y2 = this->y1;
+            this->y1 = tmp;
+        }
     }
 }
 
@@ -93,7 +118,7 @@ void Line::major_y(image::Image *image, int r, int g, int b)
         dir = -1;
         delta_x = -delta_x;
     }
-    
+
     int error = delta_x - delta_y;
     int x = this->x1;
 

@@ -5,8 +5,7 @@ namespace image
     class Image
     {
     public:
-        Image(int width, int height, std::string name);
-        void print();
+        Image(std::string name);
         void output();
         void write(int x, int y, int r, int g, int b);
 
@@ -14,6 +13,6 @@ namespace image
         int width;
         int height;
         std::string name;
-        std::vector<unsigned int> imageData;
+        unsigned int imageData[800 * 800 * 3];
     };
 }

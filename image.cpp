@@ -5,10 +5,12 @@
 using namespace std;
 using namespace image;
 
-Image::Image(int width, int height, string name) : width(width), height(height), name(name)
+Image::Image(string name) : width(800), height(800), name(name)
 {
-    vector<unsigned int> vect(width * height * 3, 0);
-    imageData = vect;
+    for (int i = 0; i < width * height * 3; i++)
+    {
+        imageData[i] = 233;
+    }
 }
 
 void Image::write(int x, int y, int r, int g, int b)
@@ -44,12 +46,4 @@ void Image::output()
 
     // Close the file
     out.close();
-}
-
-void Image::print()
-{
-    cout << this->width << "\n"
-         << this->height << "\n"
-         << this->imageData.size() << "\n"
-         << this->name << endl;
 }
