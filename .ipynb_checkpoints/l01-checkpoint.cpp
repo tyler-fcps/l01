@@ -23,12 +23,20 @@ int main()
     std::mt19937 generator(seed);
     std::uniform_int_distribution<unsigned int> distribute_xy(0, 799);
 
-    auto p1 = distribute_xy(generator);    
-    auto p2 = distribute_xy(generator);
-    auto p3 = distribute_xy(generator);
+    auto p1x = distribute_xy(generator);
+    auto p1y = distribute_xy(generator);
+    auto p2x = distribute_xy(generator);
+    auto p2y = distribute_xy(generator);
+    auto p3x = distribute_xy(generator);
+    auto p3y = distribute_xy(generator);
 
     // Make triangle
+    cout << p1x << " " << p1y << " " << p2x << " " << p2y << " " << p3x << " " << p3y << endl;
+    shapes::Triangle triangle(p1x, p1y, p2x, p2y, p3x, p3y);
+    triangle.draw(image, 200, 200, 200);
     
+    shapes::Line line(200, 500, 300, 200);
+    line.draw(image, 255, 100, 100);
     
     // Output final image
     image->output();
