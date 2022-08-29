@@ -33,10 +33,13 @@ int main()
     // Make triangle
     cout << p1x << " " << p1y << " " << p2x << " " << p2y << " " << p3x << " " << p3y << endl;
     shapes::Triangle triangle(p1x, p1y, p2x, p2y, p3x, p3y);
-    triangle.draw(image, 200, 200, 200);
-    
-    shapes::Line line(200, 500, 300, 200);
-    line.draw(image, 255, 100, 100);
+    triangle.draw(image, 255, 0, 0);
+
+    // Make circumcircle
+    int x, y, r;
+    triangle.calc_circumcircle(&x, &y, &r);
+    shapes::Circle circumcircle(x, y, r);
+    circumcircle.draw();
     
     // Output final image
     image->output();
