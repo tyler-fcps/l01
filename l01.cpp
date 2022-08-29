@@ -41,6 +41,12 @@ int main()
     cout << x << " " << y << " " << r << endl;
     shapes::Circle circumcircle(x, y, r);
     circumcircle.draw(image, 0, 255, 0);
+
+    // Make incircle
+    triangle.calc_incircle(&x, &y, &r);
+    cout << x << " " << y << " " << r << endl;
+    shapes::Circle incircle(x, y, r);
+    incircle.draw(image, 0, 0, 255);
     
     // Output final image
     image->output();

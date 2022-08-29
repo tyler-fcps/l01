@@ -19,6 +19,24 @@ void Triangle::calc_centroid(int* x, int* y) {
     *y = (y1 + y2 + y3) / 3;
 }
 
+void Triangle::calc_incircle(int* x, int* y, int* r) {
+    double a, b, c, x1, y1, x2, y2, x3, y3, d;
+    x1 = (double)this->l1.x1_pos();
+    x2 = (double)this->l1.x2_pos();
+    x3 = (double)this->l2.x2_pos();
+    y1 = (double)this->l1.y1_pos();
+    y2 = (double)this->l1.y2_pos();
+    y3 = (double)this->l2.y2_pos();
+
+    a = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
+    b = sqrt((x3 - x1)*(x3 - x1) + (y3 - y1)*(y3 - y1));
+    c = sqrt((x3 - x2)*(x3 - x2) + (y3 - y2)*(y3 - y2));
+    *r = (a*b*c) / (sqrt((a+b+c)*(b+c-a)*(c+a-b)*(a+b-c)));
+    d = 2*(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2));
+    *x = ((x1*x1 + y1*y1)*(y2-y3) + (x2*x2 + y2*y2)*(y3-y1) + (x3*x3 + y3*y3)*(y1-y2))/d;
+    *y = ((x1*x1 + y1*y1)*(x3-x2) + (x2*x2 + y2*y2)*(x1-x3) + (x3*x3 + y3*y3)*(x2-x1))/d;
+}
+
 void Triangle::calc_circumcircle(int* x, int* y, int* r) {
     int x1i, x2i, y1i, y2i;
     double s1 = -1 / this->l1.calc_slope();
