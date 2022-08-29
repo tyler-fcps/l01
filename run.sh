@@ -1,4 +1,4 @@
 #!/bin/bash
-# Comiles and runs all .cpp files
-g++ --std c++11 -fdiagnostics-color=always ./**.cpp -o l01.out
+# Runs all .cpp files
 ./l01.out
+convert output.ppm output.jpeg

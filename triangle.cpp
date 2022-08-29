@@ -21,8 +21,8 @@ void Triangle::calc_centroid(int* x, int* y) {
 
 void Triangle::calc_circumcircle(int* x, int* y, int* r) {
     int x1i, x2i, y1i, y2i;
-    double s1 = this->l1.calc_slope();
-    double s2 = this->l2.calc_slope();
+    double s1 = -1 / this->l1.calc_slope();
+    double s2 = -1 / this->l2.calc_slope();
     this->l1.calc_midpoint(&x1i, &y1i);
     this->l2.calc_midpoint(&x2i, &y2i);
     double x1, x2, y1, y2;
