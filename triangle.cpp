@@ -20,21 +20,25 @@ void Triangle::calc_centroid(int* x, int* y) {
 }
 
 void Triangle::calc_incircle(int* x, int* y, int* r) {
-    double a, b, c, x1, y1, x2, y2, x3, y3, d;
-    x1 = (double)this->l1.x1_pos();
-    x2 = (double)this->l1.x2_pos();
-    x3 = (double)this->l2.x2_pos();
-    y1 = (double)this->l1.y1_pos();
-    y2 = (double)this->l1.y2_pos();
-    y3 = (double)this->l2.y2_pos();
+    double a, b, c, p, p2, area;
+    a = this->l1.calc_length();
+    b = this->l2.calc_length();
+    c = this->l3.calc_length();
+    p = a + b + c;
+    p2 = p / 2;
+    area = sqrt(p2 * (p2 - a) * (p2 - b) * (p2 - c));
+    
+    double ax, ay, bx, by, cx, cy;
+    ax = (double)this->l2.x2_pos();
+    ay = (double)this->l2.y2_pos();
+    bx = (double)this->l3.x2_pos();
+    by = (double)this->l3.y2_pos();
+    cx = (double)this->l1.x2_pos();
+    cy = (double)this->l1.y2_pos();
 
-    a = sqrt((x2 - x1)*(x2 - x1) + (y2 - y1)*(y2 - y1));
-    b = sqrt((x3 - x1)*(x3 - x1) + (y3 - y1)*(y3 - y1));
-    c = sqrt((x3 - x2)*(x3 - x2) + (y3 - y2)*(y3 - y2));
-    *r = (a*b*c) / (sqrt((a+b+c)*(b+c-a)*(c+a-b)*(a+b-c)));
-    d = 2*(x1*(y2-y3) + x2*(y3-y1) + x3*(y1-y2));
-    *x = ((x1*x1 + y1*y1)*(y2-y3) + (x2*x2 + y2*y2)*(y3-y1) + (x3*x3 + y3*y3)*(y1-y2))/d;
-    *y = ((x1*x1 + y1*y1)*(x3-x2) + (x2*x2 + y2*y2)*(x1-x3) + (x3*x3 + y3*y3)*(x2-x1))/d;
+    *x = (int)((a * ax + b * bx + c * cx) / p);
+    *y = (int)((a * ay + b * by + c * cy) / p);
+    *r = (int)(area / p2);
 }
 
 void Triangle::calc_circumcircle(int* x, int* y, int* r) {

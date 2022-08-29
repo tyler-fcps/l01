@@ -1,5 +1,6 @@
 #include <vector>
 #include <string>
+#include <math.h>
 #include "shapes.h"
 
 using namespace std;
@@ -7,6 +8,10 @@ using namespace shapes;
 
 Line::Line(int x1, int y1, int x2, int y2) : x1(x1), x2(x2), y1(y1), y2(y2)
 {
+}
+
+double Line::calc_length() {
+    return sqrt((double)((this->x2 - this->x1) * (this->x2 - this->x1)) + (double)((this->y2 - this->y1) * (this->y2 - this->y1)));
 }
 
 void Line::calc_midpoint(int* x, int* y) {
