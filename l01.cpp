@@ -16,6 +16,8 @@ int main()
     image::Image *image = new image::Image(width, height, "output.ppm");
     image->print();
 
+    int *image = new int[800 * 800 * 3];
+
     // Generate random numbers
     std::random_device os_seed;
     auto seed = os_seed();

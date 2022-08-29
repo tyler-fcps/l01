@@ -54,4 +54,14 @@ namespace shapes
     private:
         int x, y, r;
     };
+
+    class Triangle
+    {
+    public:
+        Triangle(int x1, int y1, int x2, int y2, int x3, int y3);
+        void draw(image::Image*, int r, int g, int b);
+
+    private:
+        Line l1, l2, l3;
+    };
 }
