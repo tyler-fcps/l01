@@ -46,25 +46,22 @@ int main()
     shapes::Circle circumcircle(x, y, r);
     circumcircle.draw(image, 0, 255, 0);
 
-    // Draw euler line
-    int ex1, ey1, ex2, ey2;
-    ex1 = x;
-    ey1 = y;
-    triangle.calc_centroid(&x, &y);
-    ex2 = x;
-    ey2 = y;
-    int eulery1 = extend_line(ex1, ey1, ex2, ey2, 0);
-    int eulery2 = extend_line(ex1, ey1, ex2, ey2, 800);
-    shapes::Line euler(0, eulery1, 800, eulery2);
-    euler.draw(image, 100, 200, 200);
-
     // Draw 9 point circle
-    triangle.calc_orthocenter(&x, &y);
-    shapes::Line oh(ex1, ey1, x, y);
+    int cx, cy;
+    triangle.calc_orthocenter(&cx, &cy);
+    shapes::Line oh(cx, cy, x, y);
     oh.calc_midpoint(&x, &y);
     r /= 2;
     shapes::Circle ninepoint(x, y, r);
     ninepoint.draw(image, 255, 174, 98);
+    
+    // Draw euler line
+    int ey1, ey2;
+    triangle.calc_centroid(&cx, &cy);
+    ey1 = extend_line(x, y, cx, cy, 0);
+    ey2 = extend_line(x, y, cx, cy, 800);
+    shapes::Line euler(0, ey1, 800, ey2);
+    euler.draw(image, 100, 200, 200);
 
     // Make incircle
     triangle.calc_incircle(&x, &y, &r);
