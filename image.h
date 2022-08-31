@@ -13,6 +13,6 @@ namespace image
         int width;
         int height;
         std::string name;
-        unsigned int imageData[800 * 800 * 3];
+        unsigned int imageData[800][800 * 3];
     };
 }

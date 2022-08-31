@@ -7,9 +7,12 @@ using namespace image;
 
 Image::Image(string name) : width(800), height(800), name(name)
 {
-    for (int i = 0; i < width * height * 3; i++)
+    for (int i = 0; i < width; i++)
     {
-        imageData[i] = 0;
+        for(int j = 0; j < height * 3; j++) 
+        {
+            imageData[i][j] = 0;
+        }
     }
 }
 
@@ -20,10 +23,9 @@ void Image::write(int x, int y, int r, int g, int b)
         return;
     }
 
-    int i = (x + y * this->width) * 3;
-    this->imageData[i + 0] = r;
-    this->imageData[i + 1] = g;
-    this->imageData[i + 2] = b;
+    this->imageData[x][y * 3 + 0] = r;
+    this->imageData[x][y * 3 + 1] = g;
+    this->imageData[x][y * 3 + 2] = b;
 }
 
 void Image::output()
@@ -35,11 +37,11 @@ void Image::output()
     out << "P3 " << this->width << " " << this->height << " 255\r\n";
 
     // Write data
-    for (int i = 0; i < this->height; i++)
+    for (int i = 0; i < this->width; i++)
     {
-        for (int j = 0; j < this->width * 3; j++)
+        for (int j = 0; j < this->height * 3; j++)
         {
-            out << this->imageData[j + i * this->width * 3] << " ";
+            out << this->imageData[i][j] << " ";
         }
         out << "\n";
     }
