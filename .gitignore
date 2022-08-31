@@ -34,6 +34,6 @@
 *.ilk
 
 # Random files
-./.ipynb_checkpoints/
+/.ipynb_checkpoints/*
 output.ppm
 output.jpeg
