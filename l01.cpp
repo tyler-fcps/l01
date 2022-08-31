@@ -43,7 +43,6 @@ int main()
     // Make circumcircle
     int x, y, r;
     triangle.calc_circumcircle(&x, &y, &r);
-    cout << x << " " << y << " " << r << endl;
     shapes::Circle circumcircle(x, y, r);
     circumcircle.draw(image, 0, 255, 0);
 
@@ -69,7 +68,6 @@ int main()
 
     // Make incircle
     triangle.calc_incircle(&x, &y, &r);
-    cout << x << " " << y << " " << r << endl;
     shapes::Circle incircle(x, y, r);
     incircle.draw(image, 255, 253, 98);
 

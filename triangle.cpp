@@ -1,4 +1,3 @@
-#include <iostream>
 #include <vector>
 #include <string>
 #include <math.h>
@@ -27,7 +26,6 @@ void Triangle::calc_incircle(int *x, int *y, int *r)
     a = this->l1.calc_length();
     b = this->l2.calc_length();
     c = this->l3.calc_length();
-    cout << "Len: " << a << " " << b << " " << c << endl;
     p = a + b + c;
     p2 = p / 2;
     area = sqrt(p2 * (p2 - a) * (p2 - b) * (p2 - c));
