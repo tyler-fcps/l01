@@ -15,10 +15,10 @@ double Line::calc_length()
     return sqrt((double)((this->x2 - this->x1) * (this->x2 - this->x1)) + (double)((this->y2 - this->y1) * (this->y2 - this->y1)));
 }
 
-void Line::calc_midpoint(int *x, int *y)
+void Line::calc_midpoint(double *x, double *y)
 {
-    *x = (this->x1 + this->x2) / 2;
-    *y = (this->y1 + this->y2) / 2;
+    *x = (double)(this->x1 + this->x2) / 2;
+    *y = (double)(this->y1 + this->y2) / 2;
 }
 
 double Line::calc_slope()

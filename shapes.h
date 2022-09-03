@@ -9,7 +9,7 @@ namespace shapes
         Line() {}
         Line(int x1, int y1, int x2, int y2);
         void draw(image::Image *, int r, int g, int b);
-        void calc_midpoint(int *x, int *y);
+        void calc_midpoint(double *x, double *y);
         double calc_length();
         double calc_slope();
 
@@ -64,10 +64,10 @@ namespace shapes
     public:
         Triangle(int x1, int y1, int x2, int y2, int x3, int y3);
         void draw(image::Image *, int r, int g, int b);
-        void calc_circumcircle(int *x, int *y, int *r);
-        void calc_orthocenter(int *x, int *y);
-        void calc_incircle(int *x, int *y, int *r);
-        void calc_centroid(int *x, int *y);
+        void calc_circumcircle(double *x, double *y, double *r);
+        void calc_orthocenter(double *x, double *y);
+        void calc_incircle(double *x, double *y, double *r);
+        void calc_centroid(double *x, double *y);
 
     private:
         Line l1, l2, l3;
