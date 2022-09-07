@@ -19,7 +19,7 @@ int extend_line(double x1, double y1, double x2, double y2, double x3)
 int main()
 {
     // Make image
-    image::Image *image = new image::Image("output.ppm");
+    image::Image image = image::Image("output.ppm");
 
     // Generate random numbers
     random_device os_seed;
@@ -45,13 +45,13 @@ int main()
     // Make triangle
     cout << "Triangle Points: " << p1x << " " << p1y << ", " << p2x << " " << p2y << ", " << p3x << " " << p3y << endl;
     shapes::Triangle triangle(p1x, p1y, p2x, p2y, p3x, p3y);
-    triangle.draw(image, 255, 98, 179);
+    triangle.draw(&image, 255, 98, 179);
 
     // Make circumcircle
     double x, y, r;
     triangle.calc_circumcircle(&x, &y, &r);
     shapes::Circle circumcircle((int)x, (int)y, (int)r);
-    circumcircle.draw(image, 0, 255, 0);
+    circumcircle.draw(&image, 0, 255, 0);
 
     // Draw 9 point circle
     double cx, cy;
@@ -60,7 +60,7 @@ int main()
     y = (y + cy) / 2;
     r /= 2;
     shapes::Circle ninepoint((int)x, (int)y, (int)r);
-    ninepoint.draw(image, 255, 174, 98);
+    ninepoint.draw(&image, 255, 174, 98);
     
     // Draw euler line
     double ey1, ey2;
@@ -68,15 +68,15 @@ int main()
     ey1 = extend_line(x, y, cx, cy, 0);
     ey2 = extend_line(x, y, cx, cy, 800);
     shapes::Line euler(0, (int)ey1, 800, (int)ey2);
-    euler.draw(image, 100, 200, 200);
+    euler.draw(&image, 100, 200, 200);
 
     // Make incircle
     triangle.calc_incircle(&x, &y, &r);
     shapes::Circle incircle(x, y, r);
-    incircle.draw(image, 255, 253, 98);
+    incircle.draw(&image, 255, 253, 98);
 
     // Output final image
-    image->output();
+    image.output();
 
     return 0;
 }
