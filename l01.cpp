@@ -22,11 +22,11 @@ int main()
     image::Image *image = new image::Image("output.ppm");
 
     // Generate random numbers
-    std::random_device os_seed;
+    random_device os_seed;
     auto seed = os_seed();
 
-    std::mt19937 generator(seed);
-    std::uniform_int_distribution<unsigned int> distribute_xy(0, 799);
+    mt19937 generator(seed);
+    uniform_int_distribution<unsigned int> distribute_xy(0, 799);
 
     auto p1x = distribute_xy(generator);
     auto p1y = distribute_xy(generator);
@@ -35,12 +35,12 @@ int main()
     auto p3x = distribute_xy(generator);
     auto p3y = distribute_xy(generator);
     
-//     auto p1x = 10;
+//     auto p1x = 200;
 //     auto p1y = 400;
-//     auto p2x = 700;
-//     auto p2y = 380;
-//     auto p3x = 450;
-//     auto p3y = 420;
+//     auto p2x = 600;
+//     auto p2y = 401;
+//     auto p3x = 500;
+//     auto p3y = 405;
 
     // Make triangle
     cout << "Triangle Points: " << p1x << " " << p1y << ", " << p2x << " " << p2y << ", " << p3x << " " << p3y << endl;
